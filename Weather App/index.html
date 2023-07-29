@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/bcd177c710.js" crossorigin="anonymous"></script>
+        
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <h1 class="navbar-brand">Weather App</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
+                <form class="d-flex">
+                    <input id="city" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="text-center my-4">Weather for <span id="cityName"></span></h1>
+        <main class="container">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div class="card" style="border-radius: 35px; box-shadow: -2px 7px 18px -1px black;">
+                        <div class="card-header py-3"style="border-radius: 36px 36px 0px 0px;">
+                            <h4 class="my-0 fw-bold">Temperatures</h4>
+                        </div>
+                        <div class="card-body p-4"style="box-shadow: -2px 7px 18px -1px black;border-radius: 0px 0px 35px 35px;background: black;color: white;">
+
+                            <div class="d-flex">
+                                <h6 class="flex-grow-1"id="description">Warsaw</h6>
+                                <h6 id="currentDate">15:07</h6>
+                            </div>
+
+                            <div class="d-flex flex-column text-center mt-2 mb-3">
+                                <p class="display-4 mb-0 font-weight-bold" style="color: #ffffff;"><strong id="temp"></strong><strong>°C</strong>
+                                </p>
+                                <span class="small" style="color: #868B94">Stormy</span>
+                            </div>
+
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1" style="font-size: 1rem;">
+                                    <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"
+                                            id="wind_speed">
+                                            40
+                                        </span><span>km/h</span></div>
+                                    <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"id="humidity1">
+                                            84</span><span>%</span>
+                                    </div>
+                                    <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1">
+                                            0.2h </span>
+                                    </div>
+                                </div>
+                                <div id="icon">
+                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
+                                        width="100px">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4"style="border-radius: 35px; box-shadow: -2px 7px 18px -1px black;">
+                        <div class="card-header py-3"style="border-radius: 36px 36px 0px 0px;">
+                            <h4 class="my-0 fw-bold">Weather Information</h4>
+                        </div>
+                        <div class="card-body"style="box-shadow: -2px 7px 18px -1px black;border-radius: 0px 0px 35px 35px;background: black;color: white;">
+
+                            <h4 class="mb-1 sfw-normal text-center"id="cityname">New York, US</h4>
+                            <div class="row">
+                                <div class="col">
+                                    <p class="mb-2">Current temperature: <strong id="temp1">5.42</strong><strong>°C</strong></p>
+                                    <p>Feels like: <strong id="feels_like">4.37</strong><strong>°C</strong></p>
+                                    <p>Max: <strong id="max_temp">6.11</strong><strong>°C</strong>, Min: <strong id="min_temp">3.89</strong><strong>°C</strong>
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <p>Humidity : <strong id="humidity"></strong><strong>%</strong></p>
+                                    <P>Cloud pct : <strong id="cloud_pct"></strong><strong>%</strong></P>
+                                    <p>Wind degree : <strong id="wind_degrees"></strong><strong>°C</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4"style="border-radius: 35px; box-shadow: -2px 7px 18px -1px black;">
+                        <div class="card-header py-3"style="border-radius: 36px 36px 0px 0px;">
+                            <h4 class="my-0 fw-bold">Climate Information</h4>
+                        </div>
+                        <div class="card-body"style="box-shadow: -2px 7px 18px -1px black;border-radius: 0px 0px 35px 35px;background: black;color: white;">
+                            <div id="demo3" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ul class="carousel-indicators mb-0">
+                                    <li data-target="#demo3" data-slide-to="0"></li>
+                                    <li data-target="#demo3" data-slide-to="1"></li>
+                                    <li data-target="#demo3" data-slide-to="2" class="active"></li>
+                                </ul>
+                                <!-- Carousel inner -->
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="d-flex justify-content-around text-center mb-4 pb-3 pt-2">
+                                            <div class="flex-column">
+                                                <p class="small"><strong>Sunrise</strong></p>
+                                                
+                                                <i class="fas fa-sun fa-2x mb-3" style="color: #f5b707;"></i>
+                                                <p class="mb-0"><strong id="sunrise">4:00</strong></p>
+                                                <p class="mb-0 text-muted" style="font-size: .65rem;"><strong id="sunriseTime"></strong>AM</p>
+                                            </div>
+                                            <div class="flex-column">
+                                                <p class="small"><strong>Sunset</strong></p>
+                                                <i class="fas fa-moon fa-2x mb-3" style="color: #ddd;"></i>
+                                                <p class="mb-0"><strong id="sunset">4:00</strong></p>
+                                                <p class="mb-0 text-muted" style="font-size: .65rem;"><strong id="sunsetTime"></strong>PM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <h2 class="display-6 text-center mb-4 mt-4">Weather of other common places</h2>
+
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th style="width: 22%;"></th>
+                            <th style="width: 22%;">Cloud_pct</th>
+                            <th style="width: 22%;">Feels_like</th>
+                            <th style="width: 22%;">Humidity</th>
+                            <th style="width: 22%;">Max_temp</th>
+                            <th style="width: 22%;">Min_temp</th>
+                            <th style="width: 22%;">Sunrise</th>
+                            <th style="width: 22%;">Sunset</th>
+                            <th style="width: 22%;">Temp</th>
+                            <th style="width: 22%;">Wind_speed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start">Delhi</th>
+                            <td id="Cloud_pct_DL">1</td>
+                            <td id="Feels_like_DL">2</td>
+                            <td id="Humidity_DL">3</td>
+                            <td id="Max_temp_DL">4</td>
+                            <td id="Min_temp_DL">5</td>
+                            <td id="Sunrise_DL">6</td>
+                            <td id="Sunset_DL">7</td>
+                            <td id="Temp_DL">8</td>
+                            <td id="Wind_speed_DL">9</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Lucknow</th>
+                            <td id="Cloud_pct_LU">1</td>
+                            <td id="Feels_like_LU">2</td>
+                            <td id="Humidity_LU">3</td>
+                            <td id="Max_temp_LU">4</td>
+                            <td id="Min_temp_LU">5</td>
+                            <td id="Sunrise_LU">6</td>
+                            <td id="Sunset_LU">7</td>
+                            <td id="Temp_LU">8</td>
+                            <td id="Wind_speed_LU">9</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Bostan</th>
+                            <td id="Cloud_pct_BO">1<span></span></td>
+                            <td id="Feels_like_BO">2</td>
+                            <td id="Humidity_BO">3</td>
+                            <td id="Max_temp_BO">4</td>
+                            <td id="Min_temp_BO">5</td>
+                            <td id="Sunrise_BO">6</td>
+                            <td id="Sunset_BO">7</td>
+                            <td id="Temp_BO">8</td>
+                            <td id="Wind_speed_BO">9</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Kolkata</th>
+                            <td id="Cloud_pct_KO">1</td>
+                            <td id="Feels_like_KO">2</td>
+                            <td id="Humidity_KO">3</td>
+                            <td id="Max_temp_KO">4</td>
+                            <td id="Min_temp_KO">5</td>
+                            <td id="Sunrise_KO">6</td>
+                            <td id="Sunset_KO">7</td>
+                            <td id="Temp_KO">8</td>
+                            <td id="Wind_speed_KO">9</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Mumbai</th>
+                            <td id="Cloud_pct_MU">1</td>
+                            <td id="Feels_like_MU">2</td>
+                            <td id="Humidity_MU">3</td>
+                            <td id="Max_temp_MU">4</td>
+                            <td id="Min_temp_MU">5</td>
+                            <td id="Sunrise_MU">6</td>
+                            <td id="Sunset_MU">7</td>
+                            <td id="Temp_MU">8</td>
+                            <td id="Wind_speed_MU">9</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start">Bangalore</th>
+                            <td id="Cloud_pct_BA">1</td>
+                            <td id="Feels_like_BA">2</td>
+                            <td id="Humidity_BA">3</td>
+                            <td id="Max_temp_BA">4</td>
+                            <td id="Min_temp_BA">5</td>
+                            <td id="Sunrise_BA">6</td>
+                            <td id="Sunset_BA">7</td>
+                            <td id="Temp_BA">8</td>
+                            <td id="Wind_speed_BA">9</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
